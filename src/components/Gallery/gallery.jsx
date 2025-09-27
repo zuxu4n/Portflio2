@@ -1,6 +1,6 @@
 // src/components/Gallery.jsx
 import React from 'react'
-import CircularGallery from './CircularGallery' // adjust path if CircularGallery lives elsewhere
+import CircularGallery from './circulargallery' // adjust path if CircularGallery lives elsewhere
 
 export default function Gallery() {
   return (
