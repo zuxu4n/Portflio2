@@ -5,7 +5,7 @@ import HeroExperience from '../components/HeroModels/HeroExperience'
 import LeavesOverlay from '../components/LeavesOverlay'
 import Gallery from '../components/Gallery/gallery'
 
-const Hero = () => {
+const hero = () => {
   return (
     <section id="hero" className="relative overflow-hidden">
         {/*background here */}
