@@ -2,7 +2,7 @@ import { OrbitControls } from '@react-three/drei'
 import { Canvas, useFrame } from '@react-three/fiber'
 import React, { useRef, useState, useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
-import { bridge } from './bridge'
+import { Bridge } from './Bridge'
 import HeroLights from './HeroLights'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import * as THREE from 'three'
@@ -202,7 +202,7 @@ const HeroExperience = () => {
         position={isMobile ? [.12, -1, 0] : [.12, -1, 0]} //0.5, -1, 0
         rotation={[0.5, -Math.PI / 4, 0]}
       >
-        <bridge />
+        <Bridge />
       </group>
 
       <EffectComposer>

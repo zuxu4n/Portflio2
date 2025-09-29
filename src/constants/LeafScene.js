@@ -9,26 +9,27 @@ export default function LeafScene(el) {
     wind: { magnitude: 1.2, maxSpeed: 9, duration: 300, start: 0, speed: 0 }
   }
 
-  const getViewportW = () => window.visualViewport?.width || window.innerWidth
-  const getViewportH = () => window.visualViewport?.height || window.innerHeight
-
+  // Mobile tuning
   this.isMobile = window.matchMedia('(max-width: 768px)').matches
-  this.baseLeafScale = this.isMobile ? 0.5 : 0.8
-  this.options.wind.deviceScale = this.isMobile ? 1 / 3 : 1
+  this.baseLeafScale = this.isMobile ? 0.5 : 0.8                // leaves 50% on mobile
+  this.options.wind.deviceScale = this.isMobile ? 1 / 3 : 1   // wind 1/3 on mobile
 
-  this.width = getViewportW()
-  this.height = getViewportH()
+  this.width = this.viewport.offsetWidth
+  this.height = window.screen.height - window.screen.height / 6
   this.timer = 0
 
   this._resetLeaf = function (leaf) {
+    // start just off-screen biased to the LEFT
     leaf.x = (this.width * 2) / 5 - Math.random() * (this.width * 0.75)
     leaf.y = -10
     leaf.z = Math.random() * 200
 
+    // at time 0, allow leaves to appear anywhere vertically
     if (this.timer === 0) {
       leaf.y = 0 - this.height / 3 - Math.random() * this.height / 3
     }
 
+    // Choose axis of rotation (adds variety)
     leaf.rotation.speed = Math.random() * 10
     const r = Math.random()
     if (r > 0.5) {
@@ -39,12 +40,15 @@ export default function LeafScene(el) {
     } else {
       leaf.rotation.axis = 'Z'
       leaf.rotation.x = Math.random() * 300 - 180
+      // slower spin on Z so it doesn't look weird
       leaf.rotation.speed = Math.random() * 2
     }
 
-    leaf.xSpeedVariation = (Math.random() - 0.5) * 0.1
+    // random drift and fall speed
+    leaf.xSpeedVariation = Math.random() * 0.1 - 0.5
     leaf.ySpeed = Math.random() + 1
 
+    // base opacity for fade-out near bottom
     leaf.baseOpacity = 0.1 + Math.random() * 0.4
     leaf.opacity = leaf.baseOpacity
     leaf.el.style.opacity = leaf.opacity
@@ -62,26 +66,32 @@ export default function LeafScene(el) {
     leaf.y += leaf.ySpeed
     leaf.rotation.value += leaf.rotation.speed
 
-    const fadeZone = this.height * 0.2
+    // Calculate fade and scale based on proximity to bottom
+    const fadeZone = this.height * 0.2 // Start fading in bottom 20% of screen
     const fadeStart = this.height - fadeZone
     let opacity = leaf.baseOpacity
     let scale = 1
 
     if (leaf.y > fadeStart) {
+      // 0 = start fading, 1 = fully faded
       const fadeProgress = (leaf.y - fadeStart) / fadeZone
       const clampedProgress = Math.min(1, Math.max(0, fadeProgress))
       opacity = leaf.baseOpacity * (1 - clampedProgress)
       scale = 1 - clampedProgress * 0.9
     }
 
+    // Apply opacity
     leaf.el.style.opacity = opacity
 
+    // Final scale: desktop=1, mobile=0.5, then apply fade scale
     const finalScale = scale * (this.baseLeafScale || 1)
 
-    let t = `translate3d(${leaf.x}px, ${leaf.y}px, ${leaf.z}px) rotate${leaf.rotation.axis}(${leaf.rotation.value}deg) scale(${finalScale})`
+    // Build transform with scale
+    let t = `translateX(${leaf.x}px) translateY(${leaf.y}px) translateZ(${leaf.z}px) rotate${leaf.rotation.axis}(${leaf.rotation.value}deg) scale(${finalScale})`
     if (leaf.rotation.axis !== 'X') t += ` rotateX(${leaf.rotation.x}deg)`
     leaf.el.style.transform = t
 
+    // Reset leaf if it goes off-screen or becomes completely transparent
     if (leaf.x > this.width + 10 || leaf.y > this.height + 10 || opacity <= 0) {
       this._resetLeaf(leaf)
     }
@@ -94,6 +104,7 @@ export default function LeafScene(el) {
       this.options.wind.start = this.timer
       const screenHeight = this.height
 
+      // use deviceScale on mobile (1/3), 1 on desktop
       this.options.wind.speed = function (t, y) {
         const a = (this.magnitude / 2) * (screenHeight - (2 * y) / 3) / screenHeight
         const v = a * Math.sin((2 * Math.PI / this.duration) * t + (3 * Math.PI) / 2) + a
@@ -121,26 +132,17 @@ LeafScene.prototype.init = function () {
   this.viewport.appendChild(this.world)
   this.world.style.perspective = '400px'
 
-  const getViewportW = () => window.visualViewport?.width || window.innerWidth
-  const getViewportH = () => window.visualViewport?.height || window.innerHeight
-
   this._onResize = () => {
-    this.width = getViewportW()
-    this.height = getViewportH()
+    this.width = this.viewport.offsetWidth
+    this.height = this.viewport.offsetHeight
+
+    // Re-evaluate mobile state on resize
     const m = window.matchMedia('(max-width: 768px)').matches
-    this.baseLeafScale = m ? 0.5 : 0.8
+    this.baseLeafScale = m ? 0.5 : 1
     this.options.wind.deviceScale = m ? 1 / 3 : 1
   }
 
   window.addEventListener('resize', this._onResize)
-
-  if (window.visualViewport) {
-    this._onVVResize = () => {
-      this.width = getViewportW()
-      this.height = getViewportH()
-    }
-    window.visualViewport.addEventListener('resize', this._onVVResize)
-  }
 }
 
 LeafScene.prototype.render = function () {
@@ -163,8 +165,5 @@ LeafScene.prototype.stop = function () {
 LeafScene.prototype.destroy = function () {
   this.stop()
   window.removeEventListener('resize', this._onResize)
-  if (window.visualViewport && this._onVVResize) {
-    window.visualViewport.removeEventListener('resize', this._onVVResize)
-  }
   if (this.world && this.world.parentNode) this.world.parentNode.removeChild(this.world)
 }

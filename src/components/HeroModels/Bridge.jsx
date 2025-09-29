@@ -6,7 +6,7 @@ Command: npx gltfjsx@6.5.3 thebridge2.glb
 import React, { useEffect } from 'react'
 import { useGLTF, useTexture } from '@react-three/drei'
 
-export function bridge(props) {
+export function Bridge(props) {
   const matcapTexture = useTexture('/images/textures/mat1.png')
   const { nodes, materials } = useGLTF('/models/thebridge2.glb')
 

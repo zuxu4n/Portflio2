@@ -471,7 +471,7 @@ section {
 
 /* Transparent overlay pinned to the *viewport* */
 .leaf-overlay {
-  position: fixed;        /* was absolute */
+  position: absolute;        /* was absolute */
   inset: 0;               /* top/right/bottom/left: 0 */
   width: 100vw;
   height: 100vh;          /* ignore document height */
