@@ -54,9 +54,9 @@ const hero = () => {
             </figure>
         </div>
         <LeavesOverlay count={30} z={30}/>
-        <div aria-hidden className="h-[100vh]"></div>
+        
         <Gallery/>
-        <div aria-hidden className="h-[200vh]"></div>
+        
     </section>
   )
 }

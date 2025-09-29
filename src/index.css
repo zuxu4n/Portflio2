@@ -469,15 +469,17 @@ section {
 
 
 
-/* Transparent overlay that doesn't block clicks */
+/* Transparent overlay pinned to the *viewport* */
 .leaf-overlay {
-  position: absolute;
-  inset: 0;
+  position: fixed;        /* was absolute */
+  inset: 0;               /* top/right/bottom/left: 0 */
+  width: 100vw;
+  height: 100vh;          /* ignore document height */
   pointer-events: none;
-  z-index: 30; /* above your canvas/hero */
+  z-index: 30;
 }
 
-/* Leaf container + each leaf sprite */
+/* Fills the overlay (which is now the viewport) */
 .leaf-scene {
   position: absolute;
   inset: 0;
@@ -488,15 +490,15 @@ section {
 
 .leaf-scene div {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  background: url(D:\codes\3d-portfolio\public\images\svgviewer-output.svg) no-repeat;
+  top: 0; left: 0;
+  width: 20px; height: 20px;
+  background: url(/images/svgviewer-output.svg) no-repeat; /* ensure correct path */
   background-size: 90%;
   transform-style: preserve-3d;
   backface-visibility: visible;
+  will-change: transform, opacity;
 }
+
 
 
 .card:hover::before {
