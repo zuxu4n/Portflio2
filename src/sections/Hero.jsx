@@ -12,7 +12,7 @@ const hero = () => {
     <section id="hero" className="relative overflow-hidden">
         <SplashCursor />
         <div className="hero-layout">
-            <header className="flex flex-col justify-center md:w-full w-screen md:px-80 px-5 mt-[-130px]">
+            <header className="flex flex-col justify-center md:w-full w-screen md:px-67 px-5 mt-[-130px]">
                 <div className="flex flex-col gap-7 select-none">
                     <div className='hero-text leading-[1.2] md:leading-[1] select-none'>
                         <ShinyText 
