@@ -4,49 +4,51 @@ import Button from '../components/Button'
 import HeroExperience from '../components/HeroModels/HeroExperience'
 import LeavesOverlay from '../components/LeavesOverlay'
 import Gallery from '../components/Gallery/gallery'
+import ShinyText from "@/components/TextStuff/ShinyText";
+import SplashCursor from '../components/SplashCursor'
 
 const hero = () => {
   return (
     <section id="hero" className="relative overflow-hidden">
-        {/*background here */}
-        {/*leaf animation */}
-
+        <SplashCursor />
         <div className="hero-layout">
-            {/*LEFT: HERO CONTENT */}
-                <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5 mt-[-130px]">
-                <div className="flex flex-col gap-7">
-                    <div className='hero-text'>
-                        <h1>I'm Jason Li,</h1>
-                        <h1>Welcome to my
-                            <span className='slide'>
-                                <span className='wrapper'>
-                                    {words.map((word) => (
-                                        <span key={word.text} className="flex items-center md:gap-3 gap-1 pb-2">
-                                            <img src={word.imgPath} 
-                                                 alt={word.text}
-                                                 className='xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-white-50'
-                                                 />
-                                            <span>{word.text}</span>
-                                        </span>
-
-                                    ))}
-                                </span>
-                            </span>
-                        </h1>
-                    </div>
-                        <p className="text-[#ffb4aa] md:text-xl relative z-10 pointer-events-none">
-                             work in progress
-                        </p>
-
-                        <Button 
-                            className="md:w-80 md:h-16 w-60 h-12"
-                            id="button"
-                            text="click me"
+            <header className="flex flex-col justify-center md:w-full w-screen md:px-80 px-5 mt-[-130px]">
+                <div className="flex flex-col gap-7 select-none">
+                    <div className='hero-text leading-[1.2] md:leading-[1] select-none'>
+                        <ShinyText 
+                            text="Hello," 
+                            disabled={false} 
+                            speed={10} 
+                            className='custom-class' 
+                        />
+                        <ShinyText 
+                            text="I'm Jason Li" 
+                            disabled={false} 
+                            speed={10} 
+                            className='custom-class' 
                         />
                     </div>
-                
-                </header>
-            {/*Right: 3d model*/}
+                    <p className="text-[#ffb4aa] md:text-xl relative z-10 pointer-events-none select-none">
+                        work in progress
+                    </p>
+                    <Button 
+                        className="md:w-80 md:h-16 w-60 h-12"
+                        id="button"
+                        text="click me"
+                    />
+                    <div className="flex space-x-6 mt-4 select-none">
+                        <a href="https://linkedin.com/in/zuxu4n" target="_blank" rel="noopener noreferrer" className="inline-block cursor-pointer">
+                            <i className="fa-brands fa-linkedin text-3xl text-[#0A66C2] hover:text-[#004182] transition-colors duration-200"></i>
+                        </a>
+                        <a href="https://github.com/zuxu4n" target="_blank" rel="noopener noreferrer" className="inline-block cursor-pointer">
+                            <i className="fa-brands fa-github text-3xl text-white hover:text-gray-400 transition-colors duration-200"></i>
+                        </a>
+                        <a href="YOUR_RESUME_URL_HERE" target="_blank" rel="noopener noreferrer" className="inline-block cursor-pointer">
+                            <i className="fa-solid fa-file text-3xl text-white hover:text-gray-400 transition-colors duration-200"></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
             <figure>
                 <div className='hero-3d-layout'>
                     <HeroExperience />
