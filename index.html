@@ -49,5 +49,28 @@
         document.addEventListener('keydown', onKeyDown, true);
       })();
     </script>
+
+    <!-- Scroll to top on reload -->
+    <script>
+      // Prevent browser from restoring scroll position
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+
+      // Always scroll to top when the page loads
+      window.addEventListener('load', () => {
+        window.scrollTo(0, 0);
+      });
+
+      // Handle pageshow (for Safari and bfcache restores)
+      window.addEventListener('pageshow', (e) => {
+        if (e.persisted) window.scrollTo(0, 0);
+      });
+
+      // Optional: if a hash exists, ignore it on hard reload
+      if (location.hash) {
+        setTimeout(() => window.scrollTo(0, 0), 0);
+      }
+    </script>
   </body>
 </html>

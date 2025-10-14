@@ -3,7 +3,8 @@ import React from "react";
 const Button = ({ text = "Click Me", className = "" }) => {
   const handleClick = (e) => {
     e.preventDefault();
-    window.dispatchEvent(new Event("toggleSplashCursor"));
+
+    // window.dispatchEvent(new Event("toggleSplashCursor")); // Removed this line so clicking doesn't stop the splash cursor
 
     const target = document.getElementById("gallery");
     if (target) {

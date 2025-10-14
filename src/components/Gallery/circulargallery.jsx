@@ -332,18 +332,18 @@ class App {
   }
   createMedias(items, bend = 1, textColor, borderRadius, font) {
     const defaultItems = [
-      { image: `https://picsum.photos/seed/1/800/600?grayscale`, text: 'This' },
-      { image: `https://picsum.photos/seed/2/800/600?grayscale`, text: 'part' },
-      { image: `https://picsum.photos/seed/3/800/600?grayscale`, text: 'is' },
-      { image: `https://picsum.photos/seed/4/800/600?grayscale`, text: 'not' },
-      { image: `https://picsum.photos/seed/5/800/600?grayscale`, text: 'done' },
-      { image: `https://picsum.photos/seed/16/800/600?grayscale`, text: 'yet' },
-      { image: `https://picsum.photos/seed/17/800/600?grayscale`, text: 'This' },
-      { image: `https://picsum.photos/seed/8/800/600?grayscale`, text: 'part' },
-      { image: `https://picsum.photos/seed/9/800/600?grayscale`, text: 'is' },
-      { image: `https://picsum.photos/seed/10/800/600?grayscale`, text: 'not' },
-      { image: `https://picsum.photos/seed/21/800/600?grayscale`, text: 'done' },
-      { image: `https://picsum.photos/seed/12/800/600?grayscale`, text: 'yet' }
+      { image: `/images/meowcat.jpg`, text: 'This' },
+      { image: `/images/meowcat.jpg`, text: 'part' },
+      { image: `/images/meowcat.jpg`, text: 'is' },
+      { image: `/images/meowcat.jpg`, text: 'not' },
+      { image: `/images/meowcat.jpg`, text: 'done' },
+      { image: `/images/meowcat.jpg`, text: 'yet' },
+      { image: `/images/meowcat.jpg`, text: 'This' },
+      { image: `/images/meowcat.jpg`, text: 'part' },
+      { image: `/images/meowcat.jpg`, text: 'is' },
+      { image: `/images/meowcat.jpg`, text: 'not' },
+      { image: `/images/meowcat.jpg`, text: 'done' },
+      { image: `/images/meowcat.jpg`, text: 'yet' },
     ];
     const galleryItems = items && items.length ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);
