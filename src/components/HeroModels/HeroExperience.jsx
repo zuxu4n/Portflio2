@@ -6,6 +6,7 @@ import { Bridge } from './Bridge'
 import HeroLights from './HeroLights'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import * as THREE from 'three'
+import SmoothWheelZoom from './SmoothWheelZoom'
 
 const RESUME_DELAY_MS = 500 // resume follow .5s after last user movement
 
@@ -180,16 +181,17 @@ const HeroExperience = () => {
         mousePosition={mousePosition}
         isVisible={isVisible}
       />
+      {/* smooth zoom */}
+      <SmoothWheelZoom controlsRef={controlsRef} min={12.69} max={17.67} sensitivity={0.0015} smooth={6.7} />
 
       <OrbitControls
         ref={controlsRef}
         enablePan={false}
-        enableZoom={!isTablet}
-        maxDistance={20}
-        minDistance={5}
+        enableZoom={false}
+
         minPolarAngle={Math.PI / 5}
         maxPolarAngle={Math.PI / 2}
-        enabled // keep enabled; we never block the first drag
+        enabled
         enableDamping
         dampingFactor={0.05}
       />
@@ -198,8 +200,8 @@ const HeroExperience = () => {
 
       <group
         ref={modelRef}
-        scale={isMobile ? 0.390 : 0.460} // 465
-        position={isMobile ? [.12, -1, 0] : [.12, -1, 0]} //0.5, -1, 0
+        scale={isMobile ? 0.390 : 0.467}
+        position={isMobile ? [.12, -1, 0] : [.12, -1, 0]}
         rotation={[0.5, -Math.PI / 4, 0]}
       >
         <Bridge />

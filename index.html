@@ -6,9 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jason Li</title>
     <script src="https://kit.fontawesome.com/2ab0cc15e2.js" crossorigin="anonymous"></script>
+
+    <style>
+      html, body {
+        overflow: auto;
+        scrollbar-width: none; /* Firefox */
+      }
+      html::-webkit-scrollbar,
+      body::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Edge */
+      }
+    </style>
   </head>
+
   <body>
     <div id="root"></div>
+
     <script type="module" src="/src/main.jsx"></script>
+
+    <script>
+      (function () {
+        const preventDefault = (e) => {
+          // Allow scroll inside whitelisted containers if needed:
+          // if (e.target.closest('.allow-scroll')) return;
+          e.preventDefault();
+        };
+
+        const blockKeys = new Set([
+          'ArrowUp','ArrowDown','ArrowLeft','ArrowRight',
+          'PageUp','PageDown','Home','End',' ',
+        ]);
+
+        const onKeyDown = (e) => {
+          if (blockKeys.has(e.key)) e.preventDefault();
+        };
+
+        // Block mouse wheel + touch scroll
+        document.addEventListener('wheel', preventDefault, { passive: false });
+        document.addEventListener('touchmove', preventDefault, { passive: false });
+
+        // Block keyboard scrolling
+        document.addEventListener('keydown', onKeyDown, true);
+      })();
+    </script>
   </body>
 </html>
