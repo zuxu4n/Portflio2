@@ -37,16 +37,45 @@ const hero = () => {
                         text="click me"
                     />
                     <div className="flex space-x-6 mt-4 select-none">
-                        <a href="https://linkedin.com/in/zuxu4n" target="_blank" rel="noopener noreferrer" className="inline-block cursor-pointer">
+                        <a 
+                            href="https://linkedin.com/in/zuxu4n" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="inline-block cursor-pointer" 
+                            title="LinkedIn"
+                        >
                             <i className="fa-brands fa-linkedin text-3xl text-white hover:text-[#004182] transition-colors duration-200"></i>
                         </a>
-                        <a href="https://github.com/zuxu4n" target="_blank" rel="noopener noreferrer" className="inline-block cursor-pointer">
+
+                        <a 
+                            href="https://github.com/zuxu4n" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="inline-block cursor-pointer" 
+                            title="GitHub"
+                        >
                             <i className="fa-brands fa-github text-3xl text-white hover:text-gray-400 transition-colors duration-200"></i>
                         </a>
-                        <a href="https://jason-li-resume.tiiny.site/" target="_blank" rel="noopener noreferrer" className="inline-block cursor-pointer">
+
+                        <a 
+                            href="https://jason-li-resume.tiiny.site/" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="inline-block cursor-pointer" 
+                            title="Resume"
+                        >
                             <i className="fa-solid fa-file text-3xl text-white hover:text-gray-400 transition-colors duration-200"></i>
                         </a>
+
+                        <a 
+                            href="mailto:zuxu4n@gmail.com" 
+                            className="inline-block cursor-pointer" 
+                            title="Gmail"
+                        >
+                            <i className="fa-solid fa-envelope text-3xl text-white hover:text-gray-400 transition-colors duration-200"></i>
+                        </a>
                     </div>
+
                 </div>
                 </FadeContent>
             </header>

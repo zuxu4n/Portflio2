@@ -332,18 +332,18 @@ class App {
   }
   createMedias(items, bend = 1, textColor, borderRadius, font) {
     const defaultItems = [
+      { image: `/images/meowcat.jpg`, text: 'is' },
+      { image: `/images/meowcat.jpg`, text: 'not' },
+      { image: `/images/meowcat.jpg`, text: 'done' },
+      { image: `/images/meowcat.jpg`, text: 'yet!' },
       { image: `/images/meowcat.jpg`, text: 'This' },
       { image: `/images/meowcat.jpg`, text: 'part' },
       { image: `/images/meowcat.jpg`, text: 'is' },
       { image: `/images/meowcat.jpg`, text: 'not' },
       { image: `/images/meowcat.jpg`, text: 'done' },
-      { image: `/images/meowcat.jpg`, text: 'yet' },
+      { image: `/images/meowcat.jpg`, text: 'yet!' },
       { image: `/images/meowcat.jpg`, text: 'This' },
       { image: `/images/meowcat.jpg`, text: 'part' },
-      { image: `/images/meowcat.jpg`, text: 'is' },
-      { image: `/images/meowcat.jpg`, text: 'not' },
-      { image: `/images/meowcat.jpg`, text: 'done' },
-      { image: `/images/meowcat.jpg`, text: 'yet' },
     ];
     const galleryItems = items && items.length ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);

@@ -56,7 +56,7 @@ const styles = `
 
 .btn-5:hover {
   border-color: rgba(255, 255, 255, 0.8); /* Only color changes */
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+  box-shadow: inset 0 0 20px rgba(255, 250, 250, .5), 0 0 20px rgba(255, 255, 255, .2);
   outline-color: rgba(255, 255, 255, 0);
   outline-offset: 15px;
   text-shadow: 1px 1px 2px #427388;
