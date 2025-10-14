@@ -43,7 +43,7 @@ const hero = () => {
                         <a href="https://github.com/zuxu4n" target="_blank" rel="noopener noreferrer" className="inline-block cursor-pointer">
                             <i className="fa-brands fa-github text-3xl text-white hover:text-gray-400 transition-colors duration-200"></i>
                         </a>
-                        <a href="YOUR_RESUME_URL_HERE" target="_blank" rel="noopener noreferrer" className="inline-block cursor-pointer">
+                        <a href="https://jason-li-resume.tiiny.site/" target="_blank" rel="noopener noreferrer" className="inline-block cursor-pointer">
                             <i className="fa-solid fa-file text-3xl text-white hover:text-gray-400 transition-colors duration-200"></i>
                         </a>
                     </div>
