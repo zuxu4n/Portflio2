@@ -589,6 +589,23 @@ section {
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 }
+  .circle-div {
+    background-color: rgba(241, 241, 241, 0);
+    border-radius: 100%;
+    width: calc(10px + 4.5vmin);
+    height: calc(10px + 4.5vmin);
+    position: relative;
+    text-align: center;
+  }
+
+  .circle-div:hover {
+    background-color: rgba(241, 241, 241, 0.432);
+    backdrop-filter: blur(1px);
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+    transform: scale(1.1);
+  }
 
 .dark {
   --background: oklch(0.145 0 0);
